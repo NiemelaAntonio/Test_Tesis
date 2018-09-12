@@ -1,0 +1,9 @@
+from spacepy import pycdf.CDF
+from spacepy import pycdf   
+ import spacepy.toolbox as tb 
+import spacepy.time as spt 
+import spacepy.coords as spc  #no funciona
+import numpy as np 
+import pandas as pd #no funciona
+import matplotlib as mtlib
+import scipy as sci  
