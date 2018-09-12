@@ -7,3 +7,4 @@ import numpy as np
 import pandas as pd #no funciona
 import matplotlib as mtlib
 import scipy as sci  
+import spacepy.radbelt as sprb
