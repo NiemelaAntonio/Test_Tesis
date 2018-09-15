@@ -1,6 +1,8 @@
-from spacepy import pycdf.CDF
+source activate tesis
+cd /home/tony/Desktop/Tesis/
+ipython
 from spacepy import pycdf   
- import spacepy.toolbox as tb 
+import spacepy.toolbox as tb 
 import spacepy.time as spt 
 import spacepy.coords as spc  #no funciona
 import numpy as np 
@@ -8,3 +10,9 @@ import pandas as pd #no funciona
 import matplotlib as mtlib
 import scipy as sci  
 import spacepy.radbelt as sprb
+from datetime import timedelta, datetime
+import datetime as dt
+from os import listdir
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FixedLocator
+import numpy.ma as ma
