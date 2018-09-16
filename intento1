@@ -38,3 +38,9 @@ DosBackLos=cdf_file['DosBackLow']
 DosFront=cdf_file['DosFront']
 DosFrontLow=cdf_file['DosFrontLow']
 DosFrontMed=cdf_file['DosFrontMed']
+
+###########################
+#intento de graficar#
+###########################
+plt.plot(EPOCH,DosFront)
+plt.show()
