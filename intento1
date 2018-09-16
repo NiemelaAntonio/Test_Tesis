@@ -1,0 +1,40 @@
+###########################################
+#Importo todas las librerias que necesito
+###########################################
+
+from spacepy import pycdf
+import matplotlib
+from matplotlib.backends.backend_pdf import PdfPages
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from matplotlib.ticker import MultipleLocator
+from datetime import datetime, timedelta, date, time
+import numpy as np
+import numpy.ma as ma
+from collections import defaultdict
+import spacepy.toolbox as tb
+import spacepy.time as spt
+import spacepy.radbelt as sprb
+from spacepy import radbelt
+import spacepy.pycdf as cdf
+
+#########################################
+#abro cdf
+#########################################
+
+#NO SE CUAL ES EL ADECUADO, LOS DOS LO ABREN ME PARECE.
+#cdf=pycdf.CDF('SW_RPS_RBSPA_20180906094821_20180906123613.cdf')
+#cdf_file = cdf.CDF('SW_RPS_RBSPA_20180906094821_20180906123613.cdf')
+print(cdf_file)
+
+#########################################
+#Leo las variables
+#########################################
+
+epoch = cdf_file['Epoch']
+DosBack=cdf_file['DosBack']
+DosBackMed=cdf_file['DosBackMed']
+DosBackLos=cdf_file['DosBackLow']
+DosFront=cdf_file['DosFront']
+DosFrontLow=cdf_file['DosFrontLow']
+DosFrontMed=cdf_file['DosFrontMed']
