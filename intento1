@@ -21,26 +21,21 @@ import spacepy.pycdf as cdf
 #########################################
 #abro cdf
 #########################################
-
-#NO SE CUAL ES EL ADECUADO, LOS DOS LO ABREN ME PARECE.
-#cdf=pycdf.CDF('SW_RPS_RBSPA_20180906094821_20180906123613.cdf')
-#cdf_file = cdf.CDF('SW_RPS_RBSPA_20180906094821_20180906123613.cdf')
-print(cdf_file)
+cdf_file_1=pycdf.CDF('SW_RPS_RBSPA_20170905015228_20170905170402.cdf')
+cdf_file_2=pycdf.CDF('SW_RPS_RBSPA_20170906003436_20170906235958.cdf')
 
 #########################################
 #Leo las variables
 #########################################
+x_1=cdf_file_1['GSEXSPC']
+y_1=cdf_file_1['GSEYSPC']
+x_2=cdf_file_2['GSEXSPC']
+y_2=cdf_file_2['GSEYSPC']
 
-epoch = cdf_file['Epoch']
-DosBack=cdf_file['DosBack']
-DosBackMed=cdf_file['DosBackMed']
-DosBackLos=cdf_file['DosBackLow']
-DosFront=cdf_file['DosFront']
-DosFrontLow=cdf_file['DosFrontLow']
-DosFrontMed=cdf_file['DosFrontMed']
 
 ###########################
 #intento de graficar#
 ###########################
-plt.plot(EPOCH,DosFront)
+plt.plot(x_1,y_1)
+plt.plot(x_2,y_2)
 plt.show()
