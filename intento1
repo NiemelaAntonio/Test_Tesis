@@ -17,9 +17,11 @@ import spacepy.time as spt
 import spacepy.radbelt as sprb
 from spacepy import radbelt
 import spacepy.pycdf as cdf
+import os
+from os import listdir
 
 #########################################
-#abro cdf
+#abro cdf para coordenadas
 #########################################
 cdf_file_1=pycdf.CDF('SW_RPS_RBSPA_20170905015228_20170905170402.cdf')
 cdf_file_2=pycdf.CDF('SW_RPS_RBSPA_20170906003436_20170906235958.cdf')
@@ -39,3 +41,9 @@ y_2=cdf_file_2['GSEYSPC']
 plt.plot(x_1,y_1)
 plt.plot(x_2,y_2)
 plt.show()
+
+#########################################
+#abro cdf para ECTREPT_RBSPA
+#########################################
+arr = os.listdir()
+
