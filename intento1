@@ -47,3 +47,15 @@ plt.show()
 #########################################
 arr = os.listdir()
 
+for i in range(248,365,1):
+cdf_file_i=pycdf.CDF('SW_ECTHOPE_RBSPA_2017'+str(i)+'_L1.cdf')
+x_i=cdf_file_i['Epoch_SWE']
+
+
+for i in range(1,7,1):
+    ...:     c=open('prueba_'+str(i)+'.txt','r')
+    ...:     x.append(c)
+    ...:     print(x)
+    ...:     
+
+
