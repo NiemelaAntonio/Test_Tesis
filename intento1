@@ -1,7 +1,3 @@
-###########################################
-#Importo todas las librerias que necesito
-###########################################
-
 from spacepy import pycdf
 import matplotlib
 from matplotlib.backends.backend_pdf import PdfPages
@@ -20,42 +16,74 @@ import spacepy.pycdf as cdf
 import os
 from os import listdir
 
-#########################################
-#abro cdf para coordenadas
-#########################################
-cdf_file_1=pycdf.CDF('SW_RPS_RBSPA_20170905015228_20170905170402.cdf')
-cdf_file_2=pycdf.CDF('SW_RPS_RBSPA_20170906003436_20170906235958.cdf')
-
-#########################################
-#Leo las variables
-#########################################
-x_1=cdf_file_1['GSEXSPC']
-y_1=cdf_file_1['GSEYSPC']
-x_2=cdf_file_2['GSEXSPC']
-y_2=cdf_file_2['GSEYSPC']
+from datetime import datetime
+from datetime import datetime, timedelta, date, time
+import matplotlib.dates as mdates
 
 
-###########################
-#intento de graficar#
-###########################
-plt.plot(x_1,y_1)
-plt.plot(x_2,y_2)
+#L
+filename1 = 'RPS_RBSPA/SW_RPS_RBSPA_20170914013403_20170914083122.cdf'
+cdf_file_RPS=pycdf.CDF(filename1)
+t_RPS=cdf_file_RPS['Epoch']
+L=cdf_file_RPS['LShell']
+fig,ax=plt.subplots()
+plt.scatter(t_RPS,L)
+fig.autofmt_xdate()
+ax.set_xlim([datetime(2017, 9, 14), datetime(2017, 9, 15)])
+
 plt.show()
 
-#########################################
-#abro cdf para ECTREPT_RBSPA
-#########################################
-arr = os.listdir()
 
-for i in range(248,365,1):
-cdf_file_i=pycdf.CDF('SW_ECTHOPE_RBSPA_2017'+str(i)+'_L1.cdf')
-x_i=cdf_file_i['Epoch_SWE']
+filename2 = 'ECTHOPE_RBSPA/SW_ECTHOPE_RBSPA_2017257_L1.cdf'
+cdf_file_HOPE=pycdf.CDF(filename2)
+t_SWE=cdf_file_HOPE['Epoch_SWE']
 
 
-for i in range(1,7,1):
-    ...:     c=open('prueba_'+str(i)+'.txt','r')
-    ...:     x.append(c)
-    ...:     print(x)
-    ...:     
+e_1=cdf_file_HOPE['SWE_E_E0_PIX1_AZ000']
+e_1=ma.masked_greater(e_1, 3000)
+print(np.max(e_1))
+e_2=cdf_file_HOPE['SWE_E_E0_PIX2_AZ000']
+e_2=ma.masked_greater(e_2, 3000)
+e_3=cdf_file_HOPE['SWE_E_E0_PIX3_AZ000']
+
+
+fig,ax=plt.subplots()
+plt.plot(t_SWE,e_1,'r')
+plt.plot(t_SWE,e_2,'b')
+plt.plot(t_SWE,e_3,'g')
+fig.autofmt_xdate()
+#ax.set_xlim([datetime(2017, 9, 13), datetime(2017, 9, 14)])
+
+plt.show()
+
+
+
+
+'''
+TIEMPOS
+
+
+t_HOPE_SWE=cdf_file_HOPE['Epoch_SWE']
+t_HOPE_SWI=cdf_file_HOPE['Epoch_SWI']
+x_RPS=range(len(t_RPS))
+x_HOPE_SWE=range(len(t_HOPE_SWE))
+x_HOPE_SWI=range(len(t_HOPE_SWI))
+fig,ax=plt.subplots()
+fig.autofmt_xdate()
+ax.scatter(t_RPS,x_RPS)
+ax.scatter(t_HOPE_SWE,x_HOPE_SWE)
+ax.scatter(t_HOPE_SWI,x_HOPE_SWI)
+ax.set_xlim([datetime(2017, 9, 5), datetime(2017, 9, 6)])
+#plt.scatter(t,L)
+plt.show()
+deltat=[]
+'''
+'''
+Ver como graficar los timedelta
+for i in range(len(t)-1):
+    delta=(t[i+1][0]-t[i][0])
+    deltat.append(delta)
+    mdates.date2num(deltat)
+'''
 
 
